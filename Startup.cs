@@ -51,7 +51,8 @@ namespace TestApiProject
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //Don's use this for now
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
