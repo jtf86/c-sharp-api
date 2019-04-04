@@ -14,6 +14,6 @@ namespace TestApiProject.Models
         public string Species { get; set; }
         public int PersonId {get;set;}
         public virtual Person Person {get;set;}
-        public virtual ICollection<AnimalColor> Colors {get;set;}
+        public virtual ICollection<AnimalColor> AnimalColors {get;set;}
     }
 }

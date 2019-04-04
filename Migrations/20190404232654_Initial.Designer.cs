@@ -8,8 +8,8 @@ using TestApiProject.Models;
 namespace TestApiProject.Migrations
 {
     [DbContext(typeof(PeopleContext))]
-    [Migration("20190404230002_ManyToMany")]
-    partial class ManyToMany
+    [Migration("20190404232654_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,13 +89,13 @@ namespace TestApiProject.Migrations
 
             modelBuilder.Entity("TestApiProject.Models.AnimalColor", b =>
                 {
-                    b.HasOne("TestApiProject.Models.Color", "Color")
-                        .WithMany("Animals")
+                    b.HasOne("TestApiProject.Models.Animal", "Animal")
+                        .WithMany("AnimalColors")
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TestApiProject.Models.Animal", "Animal")
-                        .WithMany("Colors")
+                    b.HasOne("TestApiProject.Models.Color", "Color")
+                        .WithMany("AnimalColors")
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

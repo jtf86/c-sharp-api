@@ -87,13 +87,13 @@ namespace TestApiProject.Migrations
 
             modelBuilder.Entity("TestApiProject.Models.AnimalColor", b =>
                 {
-                    b.HasOne("TestApiProject.Models.Color", "Color")
-                        .WithMany("Animals")
+                    b.HasOne("TestApiProject.Models.Animal", "Animal")
+                        .WithMany("AnimalColors")
                         .HasForeignKey("AnimalId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("TestApiProject.Models.Animal", "Animal")
-                        .WithMany("Colors")
+                    b.HasOne("TestApiProject.Models.Color", "Color")
+                        .WithMany("AnimalColors")
                         .HasForeignKey("ColorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

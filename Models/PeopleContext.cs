@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System;
 
 namespace TestApiProject.Models
 {
@@ -22,16 +23,18 @@ namespace TestApiProject.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+            Console.WriteLine("<----------------BOO---------------->");
             modelBuilder.Entity<AnimalColor>()
-                .HasKey(x => new{x.AnimalId, x.ColorId});
+                .HasKey(ac => new{ ac.AnimalId, ac.ColorId });
             modelBuilder.Entity<AnimalColor>()
-                .HasOne(x => x.Animal)
-                .WithMany(y => y.Colors)
-                .HasForeignKey(y => y.ColorId);
+                .HasOne(ac => ac.Animal)
+                .WithMany(a => a.AnimalColors)
+                .HasForeignKey(ac => ac.AnimalId);
             modelBuilder.Entity<AnimalColor>()
-                .HasOne(x => x.Color)
-                .WithMany(y => y.Animals)
-                .HasForeignKey(y => y.AnimalId);
+                .HasOne(ac => ac.Color)
+                .WithMany(c => c.AnimalColors)
+                .HasForeignKey(ac => ac.ColorId);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseMySql(@"server=localhost;Port=8889;database=peopleApi;uid=root;pwd=root;");

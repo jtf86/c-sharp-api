@@ -10,8 +10,8 @@ namespace TestApiProject.Models
     {
         [Key]
         public int AnimalId { get; set; }
-        public int ColorId {get;set;}
         public Animal Animal {get;set;}
+        public int ColorId {get;set;}
         public Color Color {get;set;}
     }
 }

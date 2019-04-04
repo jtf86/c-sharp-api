@@ -19,7 +19,10 @@ namespace TestApiProject.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Object>> Get()
         {
-            return db.Animals.ToList();
+            return db.Animals
+                .Include(x=>x.Person)
+                .Include(y=>y.AnimalColors).ThenInclude(v=>v.Color)
+                .ToList();
         }
 
         // GET api/values/5
